@@ -1,6 +1,8 @@
-# Chuchurex - Chatbot MVP
+# Chuchurex - Chatbot MVP (Beta)
 
 Chatbot para cotización de proyectos web con IA.
+
+> **Estado: Beta** - Las conversaciones se almacenan para análisis y mejora del sistema.
 
 ## URLs de Producción
 
@@ -46,7 +48,16 @@ uman.ia/
 /var/www/chuchurex-api/
 ├── app.py                  # API principal
 ├── .env                    # ANTHROPIC_API_KEY
+├── chats/                  # Conversaciones guardadas (beta)
 └── venv/                   # Entorno virtual Python
+```
+
+### Acceder a los chats guardados
+
+```bash
+ssh root@64.176.19.44
+ls /var/www/chuchurex-api/chats/
+cat /var/www/chuchurex-api/chats/chat_YYYYMMDD_HHMMSS.json
 ```
 
 ### Servicios
