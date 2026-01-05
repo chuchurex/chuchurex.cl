@@ -41,9 +41,13 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 html {
     font-size: 16px;
-    scroll-behavior: smooth;
 }
 
 body {
@@ -51,7 +55,6 @@ body {
     background-color: var(--color-crema);
     color: var(--color-text);
     line-height: 1.6;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -116,8 +119,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: calc(80px + var(--spacing-lg)) var(--spacing-lg) var(--spacing-xl);
-    min-height: 100vh;
+    padding: calc(80px + var(--spacing-lg)) var(--spacing-lg) var(--spacing-md);
+    overflow-y: auto;
 }
 
 /* =============================================================================
@@ -326,9 +329,10 @@ body {
 
 .footer {
     text-align: center;
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm);
     font-size: 0.875rem;
     color: var(--color-text-light);
+    flex-shrink: 0;
 }
 
 .footer a {
