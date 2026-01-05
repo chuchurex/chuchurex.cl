@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chuchurex</title>
+    <meta name="description" content="Desarrollo de proyectos web con IA">
+    <link rel="canonical" href="https://chuchurex.cl">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="chuchurex">
+    <meta property="og:description" content="Desarrollo de proyectos web con IA">
+    <meta property="og:url" content="https://chuchurex.cl">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="logo">chuchurex</a>
+        <nav class="nav">
+            <a href="#about" class="nav-link">About</a>
+            <a href="https://astro.chuchurex.cl" class="nav-link" target="_blank">ASTRO</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be inserted here -->
+            </div>
+
+            <div class="chat-prompt">
+                <h1 class="prompt-title">¿Cuál es tu idea?</h1>
+            </div>
+
+            <form class="chat-form" id="chatForm">
+                <div class="input-wrapper">
+                    <textarea
+                        id="userInput"
+                        class="chat-input"
+                        placeholder="Cuéntame tu proyecto..."
+                        rows="1"
+                        autofocus
+                    ></textarea>
+                    <button type="submit" class="send-button" id="sendButton">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 chuchurex.cl · <a href="/privacidad">Privacidad</a></p>
+    </footer>
+
+    <!-- About Modal -->
+    <div class="modal" id="aboutModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2>Sobre Chuchurex</h2>
+            <p>Soy Carlos, desarrollador web en Santiago de Chile. Trabajo con SASS + JavaScript vanilla y uso IA como multiplicador de productividad.</p>
+            <p>Chuchurex te ayuda a desarrollar tu idea, estructurarla y cotizarla. En 48 horas tienes tu proyecto.</p>
+            <p><strong>Contacto:</strong> carlos@chuchurex.cl</p>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

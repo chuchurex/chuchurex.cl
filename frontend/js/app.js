@@ -1,0 +1,211 @@
+/**
+ * CHUCHUREX - Chat Application
+ * Frontend JavaScript
+ */
+
+const API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://127.0.0.1:8002'
+    : 'https://api.chuchurex.cl';
+
+// DOM Elements
+const chatForm = document.getElementById('chatForm');
+const userInput = document.getElementById('userInput');
+const sendButton = document.getElementById('sendButton');
+const chatMessages = document.getElementById('chatMessages');
+const aboutModal = document.getElementById('aboutModal');
+const closeModal = document.getElementById('closeModal');
+
+// Conversation history for context
+let conversationHistory = [];
+
+// =============================================================================
+// CHAT FUNCTIONS
+// =============================================================================
+
+/**
+ * Send message to backend and get response
+ */
+async function sendMessage(message) {
+    // Add user message to history
+    conversationHistory.push({
+        role: 'user',
+        content: message
+    });
+
+    // Display user message
+    displayMessage(message, 'user');
+
+    // Show typing indicator
+    const typingIndicator = showTypingIndicator();
+
+    try {
+        const response = await fetch(`${API_URL}/chat`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                message: message,
+                history: conversationHistory.slice(-10) // Last 10 messages for context
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Remove typing indicator
+        typingIndicator.remove();
+
+        // Add assistant message to history
+        conversationHistory.push({
+            role: 'assistant',
+            content: data.response
+        });
+
+        // Display assistant message
+        displayMessage(data.response, 'assistant');
+
+    } catch (error) {
+        console.error('Error:', error);
+        typingIndicator.remove();
+        displayMessage('Ups, algo salió mal. ¿Puedes intentar de nuevo?', 'assistant');
+    }
+}
+
+/**
+ * Display a message in the chat
+ */
+function displayMessage(content, role) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message message-${role}`;
+
+    // Parse markdown-like formatting for assistant messages
+    if (role === 'assistant') {
+        messageDiv.innerHTML = formatMessage(content);
+    } else {
+        messageDiv.textContent = content;
+    }
+
+    chatMessages.appendChild(messageDiv);
+    scrollToBottom();
+}
+
+/**
+ * Format message with basic markdown support
+ */
+function formatMessage(text) {
+    // Split into paragraphs
+    const paragraphs = text.split('\n\n');
+
+    return paragraphs.map(p => {
+        // Bold
+        p = p.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        // Italic
+        p = p.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        // Line breaks within paragraph
+        p = p.replace(/\n/g, '<br>');
+        return `<p>${p}</p>`;
+    }).join('');
+}
+
+/**
+ * Show typing indicator
+ */
+function showTypingIndicator() {
+    const indicator = document.createElement('div');
+    indicator.className = 'typing-indicator';
+    indicator.innerHTML = '<span></span><span></span><span></span>';
+    chatMessages.appendChild(indicator);
+    scrollToBottom();
+    return indicator;
+}
+
+/**
+ * Scroll chat to bottom
+ */
+function scrollToBottom() {
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// =============================================================================
+// TEXTAREA AUTO-RESIZE
+// =============================================================================
+
+function autoResize() {
+    userInput.style.height = 'auto';
+    userInput.style.height = Math.min(userInput.scrollHeight, 150) + 'px';
+}
+
+// =============================================================================
+// EVENT LISTENERS
+// =============================================================================
+
+// Form submit
+chatForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const message = userInput.value.trim();
+    if (!message) return;
+
+    // Disable input while sending
+    userInput.disabled = true;
+    sendButton.disabled = true;
+
+    // Clear input
+    userInput.value = '';
+    autoResize();
+
+    // Send message
+    await sendMessage(message);
+
+    // Re-enable input
+    userInput.disabled = false;
+    sendButton.disabled = false;
+    userInput.focus();
+});
+
+// Textarea auto-resize
+userInput.addEventListener('input', autoResize);
+
+// Submit on Enter (but Shift+Enter for new line)
+userInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        chatForm.dispatchEvent(new Event('submit'));
+    }
+});
+
+// About modal
+document.querySelector('a[href="#about"]').addEventListener('click', (e) => {
+    e.preventDefault();
+    aboutModal.classList.add('active');
+});
+
+closeModal.addEventListener('click', () => {
+    aboutModal.classList.remove('active');
+});
+
+aboutModal.addEventListener('click', (e) => {
+    if (e.target === aboutModal) {
+        aboutModal.classList.remove('active');
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && aboutModal.classList.contains('active')) {
+        aboutModal.classList.remove('active');
+    }
+});
+
+// =============================================================================
+// INITIALIZATION
+// =============================================================================
+
+// Focus input on load
+window.addEventListener('load', () => {
+    userInput.focus();
+});
