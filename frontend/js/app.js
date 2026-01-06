@@ -68,11 +68,15 @@ async function sendMessage(message) {
         // Display assistant message
         displayMessage(data.response, 'assistant');
 
-        // Si se debe generar PDF, mostrar enlace de descarga
+        // Si se debe generar PDF, mostrar indicador de carga
         if (data.generate_pdf && data.pdf_url) {
+            const loadingIndicator = displayPDFLoadingIndicator();
+
+            // Esperar mientras se genera el PDF
             setTimeout(() => {
+                loadingIndicator.remove();
                 displayPDFDownloadLink(data.pdf_url);
-            }, 2000); // Esperar 2 segundos para que el PDF se genere
+            }, 3000); // 3 segundos para dar tiempo a la generación
         }
 
     } catch (error) {
@@ -135,6 +139,25 @@ function showTypingIndicator() {
  */
 function scrollToBottom() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+/**
+ * Display PDF loading indicator
+ */
+function displayPDFLoadingIndicator() {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message message-assistant message-pdf-loading';
+
+    messageDiv.innerHTML = `
+        <div class="pdf-loading-content">
+            <div class="pdf-spinner"></div>
+            <p>Generando tu propuesta...</p>
+        </div>
+    `;
+
+    chatMessages.appendChild(messageDiv);
+    scrollToBottom();
+    return messageDiv;
 }
 
 /**
