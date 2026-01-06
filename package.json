@@ -1,0 +1,19 @@
+{
+  "name": "uman.ia",
+  "version": "1.0.0",
+  "description": "Chatbot para cotización de proyectos web con IA.",
+  "main": "generate-pdf.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "markdown-it": "^14.1.0",
+    "puppeteer": "^24.34.0"
+  }
+}
