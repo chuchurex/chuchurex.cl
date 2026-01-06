@@ -633,3 +633,42 @@ body
 {
     color: var(--color-conchevino);
 }
+
+/* =============================================================================
+   PDF DOWNLOAD BUTTON
+   ============================================================================= */
+
+.message-pdf
+{
+    border-left: 3px solid var(--color-conchevino);
+    padding-left: var(--spacing-md);
+}
+
+.pdf-download-button
+{
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-conchevino);
+    color: var(--color-white);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all var(--transition);
+    margin-top: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.pdf-download-button:hover
+{
+    background: var(--color-conchevino-dark);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.pdf-download-button svg
+{
+    flex-shrink: 0;
+}

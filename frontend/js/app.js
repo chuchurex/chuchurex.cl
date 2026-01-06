@@ -68,6 +68,13 @@ async function sendMessage(message) {
         // Display assistant message
         displayMessage(data.response, 'assistant');
 
+        // Si se debe generar PDF, mostrar enlace de descarga
+        if (data.generate_pdf && data.pdf_url) {
+            setTimeout(() => {
+                displayPDFDownloadLink(data.pdf_url);
+            }, 2000); // Esperar 2 segundos para que el PDF se genere
+        }
+
     } catch (error) {
         console.error('Error:', error);
         typingIndicator.remove();
@@ -128,6 +135,31 @@ function showTypingIndicator() {
  */
 function scrollToBottom() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+/**
+ * Display PDF download link
+ */
+function displayPDFDownloadLink(pdfUrl) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message message-assistant message-pdf';
+
+    const downloadLink = `${API_URL}${pdfUrl}`;
+
+    messageDiv.innerHTML = `
+        <p>✅ <strong>Tu propuesta está lista</strong></p>
+        <a href="${downloadLink}" class="pdf-download-button" target="_blank" download>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Descargar Propuesta PDF
+        </a>
+    `;
+
+    chatMessages.appendChild(messageDiv);
+    scrollToBottom();
 }
 
 // =============================================================================
