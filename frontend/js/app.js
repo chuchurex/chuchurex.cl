@@ -260,6 +260,20 @@ document.addEventListener('keydown', (e) => {
 // INITIALIZATION
 // =============================================================================
 
+// Header scroll effect
+const header = document.querySelector('.header');
+const scrollContainer = document.querySelector('.chat-messages');
+
+if (scrollContainer) {
+    scrollContainer.addEventListener('scroll', () => {
+        if (scrollContainer.scrollTop > 20) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+}
+
 // Focus input on load
 window.addEventListener('load', () => {
     userInput.focus();
