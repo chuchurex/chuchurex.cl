@@ -431,8 +431,24 @@ async def chat(request: ChatRequest):
         # Calcular turno de conversación (cada par user+assistant = 1 turno)
         turno = len(request.history) // 2 + 1
         
-        # Obtener idioma del request
-        lang = request.lang if request.lang in ["es", "en", "pt"] else "es"
+        # Detectar idioma del MENSAJE del usuario (no del navegador)
+        def detect_message_language(text):
+            text_lower = text.lower()
+            # Palabras comunes en cada idioma
+            en_words = ["hello", "hi", "hey", "need", "want", "would", "like", "please", "website", "help", "looking", "for", "the", "and", "with", "can", "you"]
+            pt_words = ["olá", "oi", "preciso", "quero", "gostaria", "por favor", "site", "ajuda", "procuro", "para", "com", "você", "pode"]
+
+            en_count = sum(1 for word in en_words if word in text_lower)
+            pt_count = sum(1 for word in pt_words if word in text_lower)
+
+            if en_count > pt_count and en_count > 0:
+                return "en"
+            elif pt_count > en_count and pt_count > 0:
+                return "pt"
+            return "es"
+
+        # Usar idioma del mensaje, no del navegador
+        lang = detect_message_language(request.message)
 
         # Detectar si el primer mensaje del usuario ya explica su proyecto
         user_already_explained = False
