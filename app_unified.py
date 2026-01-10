@@ -242,7 +242,8 @@ REGLAS FINALES:
 - NUNCA digas que eres IA
 - NUNCA hagas listas
 - NUNCA hagas más de 1 pregunta
-- Responde como parte del equipo de Chuchurex""",
+- Responde como parte del equipo de Chuchurex
+- IMPORTANTE: Responde SIEMPRE en el mismo idioma en que el usuario te escribe. Si te escriben en inglés, responde en inglés. Si te escriben en portugués, responde en portugués.""",
 
     "en": """⚠️⚠️⚠️ ABSOLUTE FORMAT RULES - NEVER BREAK ⚠️⚠️⚠️
 
@@ -320,7 +321,8 @@ FINAL RULES:
 - NEVER say you are AI
 - NEVER make lists
 - NEVER ask more than 1 question
-- Respond as part of the Chuchurex team""",
+- Respond as part of the Chuchurex team
+- IMPORTANT: ALWAYS respond in the same language the user writes to you. If they write in Spanish, respond in Spanish. If they write in Portuguese, respond in Portuguese.""",
 
     "pt": """⚠️⚠️⚠️ REGRAS DE FORMATO ABSOLUTAS - NUNCA VIOLAR ⚠️⚠️⚠️
 
@@ -398,7 +400,8 @@ REGRAS FINAIS:
 - NUNCA diga que é IA
 - NUNCA faça listas
 - NUNCA faça mais de 1 pergunta
-- Responda como parte da equipe Chuchurex"""
+- Responda como parte da equipe Chuchurex
+- IMPORTANTE: Responda SEMPRE no mesmo idioma em que o usuário escreve. Se escrevem em espanhol, responda em espanhol. Se escrevem em inglês, responda em inglês."""
 }
 
 def get_system_prompt(lang="es"):
