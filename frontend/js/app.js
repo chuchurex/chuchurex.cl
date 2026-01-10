@@ -18,6 +18,9 @@ const closeModal = document.getElementById('closeModal');
 // Conversation history for context
 let conversationHistory = [];
 
+// Current language
+let currentLang = 'es';
+
 // =============================================================================
 // CHAT FUNCTIONS
 // =============================================================================
@@ -46,7 +49,8 @@ async function sendMessage(message) {
             },
             body: JSON.stringify({
                 message: message,
-                history: conversationHistory.slice(-10) // Last 10 messages for context
+                history: conversationHistory.slice(-10), // Last 10 messages for context
+                lang: currentLang
             })
         });
 
@@ -82,7 +86,7 @@ async function sendMessage(message) {
     } catch (error) {
         console.error('Error:', error);
         typingIndicator.remove();
-        displayMessage('Ups, algo salió mal. ¿Puedes intentar de nuevo?', 'assistant');
+        displayMessage(window.i18n.t('errorGeneric'), 'assistant');
     }
 }
 
@@ -151,7 +155,7 @@ function displayPDFLoadingIndicator() {
     messageDiv.innerHTML = `
         <div class="pdf-loading-content">
             <div class="pdf-spinner"></div>
-            <p>Generando tu propuesta...</p>
+            <p>${window.i18n.t('pdfLoading')}</p>
         </div>
     `;
 
@@ -170,14 +174,14 @@ function displayPDFDownloadLink(pdfUrl) {
     const downloadLink = `${API_URL}${pdfUrl}`;
 
     messageDiv.innerHTML = `
-        <p>✅ <strong>Tu propuesta está lista</strong></p>
+        <p>✅ <strong>${window.i18n.t('pdfReady')}</strong></p>
         <a href="${downloadLink}" class="pdf-download-button" target="_blank" download>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            Descargar Propuesta PDF
+            ${window.i18n.t('pdfDownload')}
         </a>
     `;
 
@@ -273,6 +277,12 @@ if (scrollContainer) {
         }
     });
 }
+
+// Initialize i18n and apply translations
+window.addEventListener('DOMContentLoaded', () => {
+    currentLang = window.i18n.getCurrentLanguage();
+    window.i18n.applyTranslations(currentLang);
+});
 
 // Focus input on load
 window.addEventListener('load', () => {
