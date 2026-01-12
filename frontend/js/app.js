@@ -12,8 +12,6 @@ const chatForm = document.getElementById('chatForm');
 const userInput = document.getElementById('userInput');
 const sendButton = document.getElementById('sendButton');
 const chatMessages = document.getElementById('chatMessages');
-const aboutModal = document.getElementById('aboutModal');
-const closeModal = document.getElementById('closeModal');
 
 // Conversation history for context
 let conversationHistory = [];
@@ -234,29 +232,6 @@ userInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         chatForm.dispatchEvent(new Event('submit'));
-    }
-});
-
-// About modal
-document.querySelector('a[href="#about"]').addEventListener('click', (e) => {
-    e.preventDefault();
-    aboutModal.classList.add('active');
-});
-
-closeModal.addEventListener('click', () => {
-    aboutModal.classList.remove('active');
-});
-
-aboutModal.addEventListener('click', (e) => {
-    if (e.target === aboutModal) {
-        aboutModal.classList.remove('active');
-    }
-});
-
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && aboutModal.classList.contains('active')) {
-        aboutModal.classList.remove('active');
     }
 });
 

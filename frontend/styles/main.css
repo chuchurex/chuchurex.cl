@@ -592,15 +592,21 @@ body
 
 @media (max-width: 768px)
 {
+    :root
+    {
+        --header-height: 60px;
+    }
+
     .header
     {
         padding: 0 1rem;
-        height: 60px;
+        padding-top: env(safe-area-inset-top, 0px);
+        height: calc(var(--header-height) + env(safe-area-inset-top, 0px));
     }
 
     .main
     {
-        padding-top: calc(60px + 1rem);
+        padding-top: calc(var(--header-height) + env(safe-area-inset-top, 0px) + 0.5rem);
     }
 
     .chat-messages
@@ -625,4 +631,253 @@ body
     {
         max-width: 90%;
     }
+}
+
+/* =============================================================================
+   ABOUT PAGE
+   ============================================================================= */
+
+.about-page
+{
+    padding-top: calc(var(--header-height) + 2rem);
+    padding-bottom: 4rem;
+    overflow-y: auto;
+    height: calc(100vh - var(--header-height));
+}
+
+.about-container
+{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.about-content
+{
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+    box-shadow: var(--shadow-subtle);
+}
+
+.about-content h1
+{
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--color-conchevino);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.about-content .intro
+{
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+    line-height: 1.7;
+}
+
+.about-section
+{
+    margin-bottom: 3rem;
+}
+
+.about-section:last-child
+{
+    margin-bottom: 0;
+}
+
+.about-section h2
+{
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-conchevino-dark);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 0.5rem;
+}
+
+.tools-list
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tools-list li
+{
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+}
+
+.tools-list li:last-child
+{
+    margin-bottom: 0;
+}
+
+.tools-list a
+{
+    color: var(--color-conchevino);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.tools-list a:hover
+{
+    color: var(--color-conchevino-light);
+    text-decoration: underline;
+}
+
+.tool-description
+{
+    color: var(--color-text-muted);
+    display: inline;
+}
+
+.tech-stack
+{
+    display: grid;
+    gap: 1.5rem;
+}
+
+.tech-category h3
+{
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-conchevino-dark);
+    margin-bottom: 0.5rem;
+}
+
+.tech-category p
+{
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+.contact-section p
+{
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+}
+
+.contact-section a
+{
+    color: var(--color-conchevino);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.contact-section a:hover
+{
+    color: var(--color-conchevino-light);
+    text-decoration: underline;
+}
+
+/* About page responsive */
+@media (max-width: 768px)
+{
+    .about-page
+    {
+        padding-top: calc(var(--header-height) + 1rem);
+        padding-bottom: 2rem;
+    }
+
+    .about-container
+    {
+        padding: 0 1rem;
+    }
+
+    .about-content
+    {
+        padding: 2rem 1.5rem;
+        border-radius: var(--radius-md);
+    }
+
+    .about-content h1
+    {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .about-content .intro
+    {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .about-section
+    {
+        margin-bottom: 2rem;
+    }
+
+    .about-section h2
+    {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* =============================================================================
+   PRIVACY PAGE
+   ============================================================================= */
+
+.privacy-section
+{
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.privacy-section:last-child
+{
+    margin-bottom: 0;
+    margin-top: 3rem;
+}
+
+.privacy-section p
+{
+    color: var(--color-text-main);
+}
+
+.privacy-section strong
+{
+    color: var(--color-conchevino-dark);
+    font-weight: 600;
+}
+
+.privacy-section a
+{
+    color: var(--color-conchevino);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.privacy-section a:hover
+{
+    color: var(--color-conchevino-light);
+    text-decoration: underline;
+}
+
+.back-link
+{
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-conchevino);
+    color: white !important;
+    border-radius: var(--radius-sm);
+    text-decoration: none !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover
+{
+    background: var(--color-conchevino-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-subtle);
 }

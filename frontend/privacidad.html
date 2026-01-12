@@ -5,7 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n-title="privacyTitle">Política de Privacidad - Chuchurex</title>
+    <meta name="description" content="Política de privacidad de Chuchurex">
+    <link rel="canonical" href="https://chuchurex.cl/privacidad.html">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles/main.css">
 </head>
 
@@ -13,27 +20,48 @@
     <header class="header">
         <a href="/" class="logo">Chuchure<span>x</span></a>
         <nav class="nav">
-            <a href="/#about" class="nav-link" data-i18n="footerAbout">Acerca</a>
+            <a href="https://astro.chuchurex.cl" class="nav-link" target="_blank">ASTRO</a>
         </nav>
     </header>
 
-    <main class="main">
-        <div class="chat-container">
-            <h1 class="prompt-title" data-i18n="privacyHeader">Política de Privacidad</h1>
-            <div class="privacy-content">
-                <p><strong data-i18n="privacyBetaLabel">Beta:</strong> <span data-i18n="privacyBetaText">Este servicio se encuentra en fase de prueba. Durante este período, las conversaciones pueden ser almacenadas temporalmente para análisis y mejora del sistema.</span></p>
-                <p><strong data-i18n="privacyResponsibleLabel">Responsable:</strong> Carlos Martínez, carlos@chuchurex.cl</p>
-                <p><strong data-i18n="privacyDataLabel">Datos recopilados:</strong> <span data-i18n="privacyDataText">Durante la fase beta, las conversaciones del chat pueden ser almacenadas para mejorar el servicio. No se recopilan datos personales identificables.</span></p>
-                <p><strong data-i18n="privacyCookiesLabel">Cookies:</strong> <span data-i18n="privacyCookiesText">No utilizamos cookies de seguimiento ni publicidad.</span></p>
-                <p><strong data-i18n="privacyThirdPartyLabel">Terceros:</strong> <span data-i18n="privacyThirdPartyText">El chat utiliza la API de Anthropic para procesar mensajes. Consulta su</span> <a href="https://www.anthropic.com/privacy" target="_blank" data-i18n="privacyThirdPartyLink">política de privacidad</a>.</p>
-                <p><strong data-i18n="privacyRightsLabel">Derechos:</strong> <span data-i18n="privacyRightsText">Puedes contactarnos en carlos@chuchurex.cl para cualquier consulta.</span></p>
-                <p><a href="/" data-i18n="privacyBackHome">Volver al inicio</a></p>
-            </div>
+    <main class="main about-page">
+        <div class="about-container">
+            <article class="about-content">
+                <h1 data-i18n="privacyHeader">Política de Privacidad</h1>
+
+                <div class="privacy-section">
+                    <p><strong data-i18n="privacyBetaLabel">Beta:</strong> <span data-i18n="privacyBetaText">Este servicio se encuentra en fase de prueba. Durante este período, las conversaciones pueden ser almacenadas temporalmente para análisis y mejora del sistema.</span></p>
+                </div>
+
+                <div class="privacy-section">
+                    <p><strong data-i18n="privacyResponsibleLabel">Responsable:</strong> Carlos Martínez, carlos@chuchurex.cl</p>
+                </div>
+
+                <div class="privacy-section">
+                    <p><strong data-i18n="privacyDataLabel">Datos recopilados:</strong> <span data-i18n="privacyDataText">Durante la fase beta, las conversaciones del chat pueden ser almacenadas para mejorar el servicio. No se recopilan datos personales identificables.</span></p>
+                </div>
+
+                <div class="privacy-section">
+                    <p><strong data-i18n="privacyCookiesLabel">Cookies:</strong> <span data-i18n="privacyCookiesText">No utilizamos cookies de seguimiento ni publicidad.</span></p>
+                </div>
+
+                <div class="privacy-section">
+                    <p><strong data-i18n="privacyThirdPartyLabel">Terceros:</strong> <span data-i18n="privacyThirdPartyText">El chat utiliza la API de Anthropic para procesar mensajes. Consulta su</span> <a href="https://www.anthropic.com/privacy" target="_blank" data-i18n="privacyThirdPartyLink">política de privacidad</a>.</p>
+                </div>
+
+                <div class="privacy-section">
+                    <p><strong data-i18n="privacyRightsLabel">Derechos:</strong> <span data-i18n="privacyRightsText">Puedes contactarnos en carlos@chuchurex.cl para cualquier consulta.</span></p>
+                </div>
+
+                <div class="privacy-section">
+                    <p><a href="/" class="back-link" data-i18n="privacyBackHome">Volver al inicio</a></p>
+                </div>
+            </article>
         </div>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 Chuchurex.cl</p>
+        <p>&copy; 2026 Chuchurex.cl · <a href="/about.html">Acerca</a> · <a href="/privacidad.html">Privacidad</a></p>
     </footer>
 
     <script src="js/i18n.js"></script>
