@@ -11,6 +11,7 @@ const translations = {
 
         // Header
         headerTitle: "Desarrollo Web e Inteligencia Artificial",
+        navElUno: "EL UNO",
 
         // Chat
         placeholder: "Describe tu proyecto y te ayudo a desarrollar tu idea...",
@@ -57,6 +58,7 @@ const translations = {
 
         // Header
         headerTitle: "Web Development and Artificial Intelligence",
+        navElUno: "THE ONE",
 
         // Chat
         placeholder: "Describe your project and I'll help you develop your idea...",
@@ -103,6 +105,7 @@ const translations = {
 
         // Header
         headerTitle: "Desenvolvimento Web e Inteligência Artificial",
+        navElUno: "O UM",
 
         // Chat
         placeholder: "Descreva seu projeto e eu ajudo a desenvolver sua ideia...",
