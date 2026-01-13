@@ -112,23 +112,29 @@ El chatbot está configurado con las siguientes características:
 
 ## Deploy
 
+> **🤖 Para Claude Code:** Lee `.claude-instructions.md` o `DEPLOY.md` para instrucciones detalladas
+
 ### Frontend (Cloudflare Pages)
 El deploy es automático al hacer push a `main`:
 
 ```bash
-git add -A
-git commit -m "mensaje"
-git push
+git add frontend/
+git commit -m "descripción del cambio"
+git push origin main
 ```
+
+**Cloudflare Pages despliega automáticamente en ~1 minuto**
 
 ### Backend (VPS)
-Editar directamente en el servidor y reiniciar:
+Usar el script de deploy:
 
 ```bash
-ssh root@64.176.19.44
-nano /var/www/chuchurex-api/app.py
-sudo systemctl restart chuchurex
+./deploy.sh
 ```
+
+El script sube archivos vía SSH y reinicia el servicio automáticamente.
+
+**Documentación completa:** Ver `DEPLOY.md`
 
 ## Diseño
 
