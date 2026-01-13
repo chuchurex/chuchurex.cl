@@ -1,51 +1,51 @@
-# 🤖 CLAUDE CODE: LEE ESTO PRIMERO
+# 🤖 CLAUDE CODE: READ THIS FIRST
 
-## Deploy Automático - Chuchurex
+## Automatic Deploy - Chuchurex
 
 ### ⚡ Quick Reference
 
 ```bash
-# Cambios en frontend/ → Git push
+# Changes in frontend/ → Git push
 git add frontend/
-git commit -m "mensaje"
+git commit -m "message"
 git push origin main
 
-# Cambios en backend → Script deploy
+# Changes in backend → Deploy script
 ./deploy.sh
 ```
 
-### 🎯 Regla de Oro
+### 🎯 Golden Rule
 
 **Frontend = Git push | Backend = ./deploy.sh**
 
-### 📚 Documentación Completa
+### 📚 Complete Documentation
 
-- **Instrucciones detalladas:** `.claude-instructions.md`
-- **Guía completa de deploy:** `DEPLOY.md`
-- **Resumen del proyecto:** `README.md`
+- **Detailed instructions:** `.claude-instructions.md`
+- **Complete deploy guide:** `DEPLOY.md`
+- **Project summary:** `README.md`
 
-### ⚠️ Errores Comunes a Evitar
+### ⚠️ Common Mistakes to Avoid
 
-❌ No uses `rsync` o `scp` para frontend
-❌ No intentes `ssh root@64.176.19.44` para frontend
-❌ No preguntes "¿cómo publico esto?"
+❌ Don't use `rsync` or `scp` for frontend
+❌ Don't try `ssh root@64.176.19.44` for frontend
+❌ Don't ask "how do I publish this?"
 
-✅ Frontend siempre → `git push origin main`
-✅ Backend siempre → `./deploy.sh`
-✅ Deploy automáticamente cuando el usuario lo pida
+✅ Frontend always → `git push origin main`
+✅ Backend always → `./deploy.sh`
+✅ Deploy automatically when user requests it
 
-### 🚀 Cuando el Usuario Dice:
+### 🚀 When User Says:
 
-- "Publica" → Ejecuta el deploy apropiado (git push o ./deploy.sh)
-- "Deploy" → Ejecuta el deploy apropiado
-- "Sube a producción" → Ejecuta el deploy apropiado
+- "Publish" → Execute appropriate deploy (git push or ./deploy.sh)
+- "Deploy" → Execute appropriate deploy
+- "Push to production" → Execute appropriate deploy
 
-**NO preguntes cómo hacerlo. Ya lo sabes.**
+**DON'T ask how to do it. You already know.**
 
 ---
 
 **Hosting:**
-- Frontend: Cloudflare Pages (auto-deploy desde GitHub)
-- Backend: Vultr VPS (deploy.sh maneja SSH)
+- Frontend: Cloudflare Pages (auto-deploy from GitHub)
+- Backend: Vultr VPS (deploy.sh handles SSH)
 
-**Infraestructura diseñada para que deployes automáticamente.**
+**Infrastructure designed for you to deploy automatically.**

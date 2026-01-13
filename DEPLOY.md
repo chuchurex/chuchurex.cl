@@ -1,38 +1,38 @@
-# Deploy de Chuchurex
+# Chuchurex Deploy
 
-## 🤖 INSTRUCCIONES PARA CLAUDE CODE
+## 🤖 INSTRUCTIONS FOR CLAUDE CODE
 
-**IMPORTANTE:** Este documento es para que Claude Code pueda deployar automáticamente sin preguntar cada vez.
+**IMPORTANT:** This document is for Claude Code to deploy automatically without asking every time.
 
-### Deploy Frontend (SIEMPRE USA ESTE MÉTODO)
+### Frontend Deploy (ALWAYS USE THIS METHOD)
 
-Cuando modifiques archivos del frontend (`frontend/` directory), el deploy es **automático vía GitHub**:
+When modifying frontend files (`frontend/` directory), deploy is **automatic via GitHub**:
 
 ```bash
-# 1. Stage los archivos modificados
+# 1. Stage modified files
 git add frontend/
 
-# 2. Commit con mensaje descriptivo
-git commit -m "descripción del cambio"
+# 2. Commit with descriptive message
+git commit -m "change description"
 
-# 3. Push a GitHub (Cloudflare Pages detecta y despliega automáticamente)
+# 3. Push to GitHub (Cloudflare Pages detects and deploys automatically)
 git push origin main
 ```
 
-**NO INTENTAR:** rsync, scp, ssh al servidor 64.176.19.44 - ese servidor es solo para el backend API.
+**DON'T TRY:** rsync, scp, ssh to server 64.176.19.44 - that server is only for backend API.
 
-**HOSTING:** Cloudflare Pages detecta el push y despliega en ~1 minuto automáticamente.
+**HOSTING:** Cloudflare Pages detects the push and deploys automatically in ~1 minute.
 
 ---
 
-## Arquitectura
+## Architecture
 
-El proyecto tiene dos partes separadas:
+The project has two separate parts:
 
-| Componente | Hosting | Deploy |
-|------------|---------|--------|
-| **Frontend** | Cloudflare Pages | Auto-deploy desde GitHub |
-| **Backend API** | Vultr VPS (64.176.19.44) | Manual con `./deploy.sh` |
+| Component | Hosting | Deploy |
+|-----------|---------|--------|
+| **Frontend** | Cloudflare Pages | Auto-deploy from GitHub |
+| **Backend API** | Vultr VPS (64.176.19.44) | Manual with `./deploy.sh` |
 
 ---
 
@@ -40,31 +40,31 @@ El proyecto tiene dos partes separadas:
 
 ### Hosting: Cloudflare Pages
 
-El frontend está conectado directamente a GitHub. **No usa Hostinger**.
+Frontend is directly connected to GitHub. **Does NOT use Hostinger**.
 
-### Deploy automático
+### Automatic deploy
 
-Solo necesitas hacer push a GitHub:
+Just push to GitHub:
 
 ```bash
 git add .
-git commit -m "tu mensaje"
+git commit -m "your message"
 git push origin main
 ```
 
-Cloudflare Pages detecta el push y despliega automáticamente en ~1 minuto.
+Cloudflare Pages detects the push and deploys automatically in ~1 minute.
 
-### Verificar deploy
+### Verify deploy
 
-- Producción: https://chuchurex.cl
+- Production: https://chuchurex.cl
 - About: https://chuchurex.cl/about.html
-- Privacidad: https://chuchurex.cl/privacidad.html
+- Privacy: https://chuchurex.cl/privacidad.html
 
-### Configuración en Cloudflare
+### Cloudflare configuration
 
-- **Proyecto:** chuchurex
+- **Project:** chuchurex
 - **Branch:** main
-- **Build command:** (ninguno, archivos estáticos)
+- **Build command:** (none, static files)
 - **Output directory:** frontend
 
 ---
@@ -75,34 +75,34 @@ Cloudflare Pages detecta el push y despliega automáticamente en ~1 minuto.
 
 ```
 IP: 64.176.19.44
-Usuario: root
-Directorio: /var/www/chuchurex-api
+User: root
+Directory: /var/www/chuchurex-api
 ```
 
-### 🤖 Deploy para Claude Code
+### 🤖 Deploy for Claude Code
 
-Cuando modifiques archivos del backend (`app.py`, `app_unified.py`, `pdf-generator/`):
+When modifying backend files (`app.py`, `app_unified.py`, `pdf-generator/`):
 
 ```bash
-# El script deploy.sh maneja SSH automáticamente
+# The deploy.sh script handles SSH automatically
 ./deploy.sh
 ```
 
-**NO NECESITAS:** Configurar SSH, agregar claves, o ejecutar rsync/scp manualmente. El script `deploy.sh` ya tiene todo configurado.
+**YOU DON'T NEED:** Configure SSH, add keys, or run rsync/scp manually. The `deploy.sh` script has everything configured.
 
-### Deploy manual (humanos)
+### Manual deploy (humans)
 
 ```bash
 ./deploy.sh
 ```
 
-Este script:
-1. Sube `app_unified.py` como `app.py`
-2. Sube `pdf-generator/`
-3. Instala dependencias de Node
-4. Reinicia el servicio `chuchurex`
+This script:
+1. Uploads `app_unified.py` as `app.py`
+2. Uploads `pdf-generator/`
+3. Installs Node dependencies
+4. Restarts `chuchurex` service
 
-### Verificar API
+### Verify API
 
 - API: https://api.chuchurex.cl
 - Health check: https://api.chuchurex.cl/health
@@ -110,71 +110,71 @@ Este script:
 
 ---
 
-## Desarrollo local
+## Local Development
 
-### Levantar frontend
+### Start frontend
 
 ```bash
 npm run dev
 ```
 
-Abre automáticamente http://localhost:3007
+Automatically opens http://localhost:3007
 
-### Scripts disponibles
+### Available scripts
 
 ```bash
-npm run dev          # Frontend con live-reload + abre navegador
-npm run dev:frontend # Frontend sin abrir navegador
-npm run dev:backend  # Backend (requiere venv con uvicorn)
+npm run dev          # Frontend with live-reload + opens browser
+npm run dev:frontend # Frontend without opening browser
+npm run dev:backend  # Backend (requires venv with uvicorn)
 ```
 
 ---
 
-## Resumen rápido
+## Quick Summary
 
 ```bash
-# Desarrollo
+# Development
 npm run dev
 
-# Publicar frontend (auto)
-git add . && git commit -m "mensaje" && git push
+# Publish frontend (auto)
+git add . && git commit -m "message" && git push
 
-# Publicar backend (manual)
+# Publish backend (manual)
 ./deploy.sh
 ```
 
 ---
 
-## 🤖 Checklist para Claude Code
+## 🤖 Checklist for Claude Code
 
-### Antes de deployar frontend:
-- [ ] ¿Modifiqué archivos en `frontend/`? → Usar git push (NO ssh/rsync)
-- [ ] Stage archivos: `git add frontend/`
-- [ ] Commit: `git commit -m "descripción"`
+### Before deploying frontend:
+- [ ] Did I modify files in `frontend/`? → Use git push (NOT ssh/rsync)
+- [ ] Stage files: `git add frontend/`
+- [ ] Commit: `git commit -m "description"`
 - [ ] Push: `git push origin main`
-- [ ] Cloudflare Pages despliega automáticamente en ~1 min
+- [ ] Cloudflare Pages deploys automatically in ~1 min
 
-### Antes de deployar backend:
-- [ ] ¿Modifiqué `app.py`, `app_unified.py` o `pdf-generator/`?
-- [ ] Ejecutar: `./deploy.sh`
-- [ ] El script maneja SSH automáticamente
+### Before deploying backend:
+- [ ] Did I modify `app.py`, `app_unified.py` or `pdf-generator/`?
+- [ ] Execute: `./deploy.sh`
+- [ ] Script handles SSH automatically
 
-### ⚠️ NUNCA HACER:
+### ⚠️ NEVER DO:
 - ❌ `rsync frontend/ root@64.176.19.44:/var/www/...`
 - ❌ `scp frontend/*.html root@64.176.19.44:...`
-- ❌ `ssh root@64.176.19.44` para subir frontend
-- ❌ Preguntar por claves SSH para frontend deploy
+- ❌ `ssh root@64.176.19.44` to upload frontend
+- ❌ Ask for SSH keys for frontend deploy
 
-### ✅ SIEMPRE HACER:
+### ✅ ALWAYS DO:
 - ✅ Frontend → git push origin main
 - ✅ Backend → ./deploy.sh
-- ✅ Leer este archivo antes de intentar deploy
+- ✅ Read this file before attempting deploy
 
 ---
 
-## Notas
+## Notes
 
-- **NO usar Hostinger** para este proyecto
-- El archivo `deploy-frontend.sh` está obsoleto (era para Hostinger)
-- Cloudflare Pages hace el deploy automático, no necesitas wrangler
-- El servidor 64.176.19.44 es **SOLO para backend API**, no para frontend
+- **DO NOT use Hostinger** for this project
+- The `deploy-frontend.sh` file is obsolete (was for Hostinger)
+- Cloudflare Pages does automatic deploy, you don't need wrangler
+- Server 64.176.19.44 is **ONLY for backend API**, not for frontend

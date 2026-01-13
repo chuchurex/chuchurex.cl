@@ -1,34 +1,34 @@
-# Chuchurex - Contexto del Proyecto
+# Chuchurex - Project Context
 
-> **Actualizado:** 12 Enero 2026
-> **Estado:** ✅ En producción
-> **Fase:** MVP funcional con generación de PDFs
-
----
-
-## Resumen
-
-Chatbot de cotización de proyectos web que ayuda a estructurar ideas y generar propuestas profesionales. Usa Claude API (Haiku para chat, Sonnet para PDFs) como motor de IA. Diseño minimalista con paleta crema + conchevino.
+> **Updated:** January 12, 2026
+> **Status:** ✅ In production
+> **Phase:** Functional MVP with PDF generation
 
 ---
 
-## Estado Actual
+## Summary
 
-- **Fase:** MVP en producción
+Web project quotation chatbot that helps structure ideas and generate professional proposals. Uses Claude API (Haiku for chat, Sonnet for PDFs) as AI engine. Minimalist design with cream + burgundy palette.
+
+---
+
+## Current Status
+
+- **Phase:** MVP in production
 - **Frontend:** https://chuchurex.cl
 - **API:** https://api.chuchurex.cl
-- **Features activas:**
-  - ✅ Chat conversacional con Claude Haiku
-  - ✅ Generación automática de propuestas en PDF
-  - ✅ Multiidioma (ES/EN/PT)
-  - ✅ Sistema de tarifas integrado
+- **Active features:**
+  - ✅ Conversational chat with Claude Haiku
+  - ✅ Automatic PDF proposal generation
+  - ✅ Multilingual (ES/EN/PT)
+  - ✅ Integrated pricing system
 
 ---
 
-## Arquitectura
+## Architecture
 
 ```
-Usuario
+User
    │
    ▼
 chuchurex.cl (Cloudflare Pages)
@@ -37,7 +37,7 @@ chuchurex.cl (Cloudflare Pages)
 api.chuchurex.cl (Vultr VPS)
    │ FastAPI + Python
    ├─► Claude API Haiku (chat)
-   └─► Claude API Sonnet (análisis para PDFs)
+   └─► Claude API Sonnet (PDF analysis)
         │
         ▼
    pdf-generator/ (Node.js + Puppeteer)
@@ -45,52 +45,52 @@ api.chuchurex.cl (Vultr VPS)
 
 ---
 
-## Stack Tecnológico
+## Tech Stack
 
-| Capa | Tecnología |
+| Layer | Technology |
 |------|------------|
 | Frontend | HTML + CSS + JS vanilla |
 | Backend | FastAPI (Python) + Node.js |
-| IA | Claude API (Haiku + Sonnet) |
+| AI | Claude API (Haiku + Sonnet) |
 | PDFs | Puppeteer + markdown-it |
-| Hosting Frontend | Cloudflare Pages |
-| Hosting Backend | Vultr VPS (Ubuntu 24.04) |
+| Frontend Hosting | Cloudflare Pages |
+| Backend Hosting | Vultr VPS (Ubuntu 24.04) |
 | DNS | Cloudflare |
 
 ---
 
-## Estructura de Archivos
+## File Structure
 
 ```
 chuchurex.cl/
-├── frontend/              # Frontend estático
-│   ├── index.html         # Chat principal
-│   ├── about.html         # Sobre el proyecto
-│   ├── privacidad.html    # Política de privacidad
+├── frontend/              # Static frontend
+│   ├── index.html         # Main chat
+│   ├── about.html         # About page
+│   ├── privacidad.html    # Privacy policy
 │   ├── js/
-│   │   ├── app.js         # Lógica del chat
-│   │   └── i18n.js        # Internacionalización
+│   │   ├── app.js         # Chat logic
+│   │   └── i18n.js        # Internationalization
 │   └── styles/
-│       └── main.css       # Estilos crema + conchevino
+│       └── main.css       # Cream + burgundy styles
 │
-├── pdf-generator/         # Generador de PDFs (Node.js)
+├── pdf-generator/         # PDF generator (Node.js)
 │   ├── generate-pdf-api.js
 │   └── package.json
 │
-├── app_unified.py         # Backend principal (FastAPI)
-├── deploy.sh              # Script de deploy backend
-├── dev.sh                 # Script desarrollo local
+├── app_unified.py         # Main backend (FastAPI)
+├── deploy.sh              # Backend deploy script
+├── dev.sh                 # Local development script
 │
-├── docs/                  # Documentación técnica
-│   ├── DOCS_PDF_GENERATION.md   # Arquitectura PDFs
-│   ├── PLAN_PDF_PROPUESTAS.md   # Plan feature PDFs
-│   └── TARIFAS.md               # Modelo de precios
+├── docs/                  # Technical documentation
+│   ├── DOCS_PDF_GENERATION.md   # PDF architecture
+│   ├── PLAN_PDF_PROPUESTAS.md   # PDF feature plan
+│   └── TARIFAS.md               # Pricing model
 │
-├── .claude-instructions.md      # Instrucciones para Claude Code
-├── CLAUDE_START_HERE.md         # Quick reference deploy
-├── DEPLOY.md                    # Guía completa de deploy
-├── CONTEXT.md                   # Este archivo
-└── README.md                    # Documentación principal
+├── .claude-instructions.md      # Claude Code instructions
+├── CLAUDE_START_HERE.md         # Deploy quick reference
+├── DEPLOY.md                    # Complete deploy guide
+├── CONTEXT.md                   # This file
+└── README.md                    # Main documentation
 ```
 
 ---
@@ -100,99 +100,99 @@ chuchurex.cl/
 ### Frontend
 ```bash
 git add frontend/
-git commit -m "descripción"
+git commit -m "description"
 git push origin main
 ```
-Cloudflare Pages despliega automáticamente en ~1 minuto.
+Cloudflare Pages deploys automatically in ~1 minute.
 
 ### Backend
 ```bash
 ./deploy.sh
 ```
-Script que sube `app_unified.py` y `pdf-generator/` al VPS vía SSH.
+Script that uploads `app_unified.py` and `pdf-generator/` to VPS via SSH.
 
-**Documentación completa:** Ver `DEPLOY.md` y `.claude-instructions.md`
+**Complete documentation:** See `DEPLOY.md` and `.claude-instructions.md`
 
 ---
 
-## Comandos de Desarrollo
+## Development Commands
 
 ```bash
-# Desarrollo local (frontend + backend)
-npm run dev              # Abre http://localhost:3007
+# Local development (frontend + backend)
+npm run dev              # Opens http://localhost:3007
 
-# Solo frontend
-npm run dev:frontend     # Sin auto-abrir navegador
+# Frontend only
+npm run dev:frontend     # Without auto-opening browser
 
-# Solo backend (requiere venv)
-npm run dev:backend      # Puerto 8002
+# Backend only (requires venv)
+npm run dev:backend      # Port 8002
 ```
 
 ---
 
-## Puertos
+## Ports
 
-| Puerto | Uso |
+| Port | Use |
 |--------|-----|
-| 3007 | Frontend local |
-| 8002 | Backend local |
+| 3007 | Local frontend |
+| 8002 | Local backend |
 
 ---
 
-## Documentación Adicional
+## Additional Documentation
 
-| Archivo | Contenido |
+| File | Content |
 |---------|-----------|
-| `docs/TARIFAS.md` | Modelo de precios y condiciones comerciales |
-| `docs/DOCS_PDF_GENERATION.md` | Arquitectura del sistema de PDFs |
-| `docs/PLAN_PDF_PROPUESTAS.md` | Plan de implementación de PDFs |
-| `DEPLOY.md` | Guía completa de deploy |
-| `.claude-instructions.md` | Instrucciones para Claude Code |
-| `README.md` | Documentación principal del proyecto |
+| `docs/TARIFAS.md` | Pricing model and business terms |
+| `docs/DOCS_PDF_GENERATION.md` | PDF system architecture |
+| `docs/PLAN_PDF_PROPUESTAS.md` | PDF implementation plan |
+| `DEPLOY.md` | Complete deploy guide |
+| `.claude-instructions.md` | Claude Code instructions |
+| `README.md` | Main project documentation |
 
 ---
 
-## Sitios Hermanos
+## Sister Sites
 
 - **Astro Chuchurex:** https://astro.chuchurex.cl (portfolio)
-- **El Uno:** https://eluno.org (sitio hermano)
+- **El Uno:** https://eluno.org (sister site)
 
-Marcas SEO hreflang configuradas en todas las páginas.
-
----
-
-## Historial de Cambios Recientes
-
-### 2026-01-12 - feat: Menu El Uno + SEO
-- Agregado enlace a eluno.org en menú
-- Traducciones ES/EN/PT (El Uno, The One, O Um)
-- Tags hreflang para sitios hermanos
-- Documentación de deploy para Claude Code
-
-### 2026-01-10 - feat: PDFs automáticos
-- Sistema de generación de propuestas PDF
-- Integración Claude Sonnet para análisis
-- Puppeteer + markdown-it para renderizado
-
-### 2026-01-06 - feat: Deploy automatizado
-- Script deploy.sh para backend
-- Cloudflare Pages para frontend
-- Documentación completa
-
-### 2026-01-05 - feat: MVP inicial
-- Frontend completo con i18n
-- Backend FastAPI + Claude Haiku
-- Sistema de tarifas integrado
+Hreflang SEO tags configured on all pages.
 
 ---
 
-## Próximos Pasos
+## Recent Changes History
 
-- [ ] Analytics (opcional)
-- [ ] Tests automatizados
-- [ ] Mejoras en UX del chat
-- [ ] Más opciones de personalización de PDFs
+### 2026-01-12 - feat: El Uno Menu + SEO
+- Added link to eluno.org in menu
+- ES/EN/PT translations (El Uno, The One, O Um)
+- Hreflang tags for sister sites
+- Deploy documentation for Claude Code
+
+### 2026-01-10 - feat: Automatic PDFs
+- PDF proposal generation system
+- Claude Sonnet integration for analysis
+- Puppeteer + markdown-it for rendering
+
+### 2026-01-06 - feat: Automated deploy
+- deploy.sh script for backend
+- Cloudflare Pages for frontend
+- Complete documentation
+
+### 2026-01-05 - feat: Initial MVP
+- Complete frontend with i18n
+- FastAPI backend + Claude Haiku
+- Integrated pricing system
 
 ---
 
-*Para información de deploy, ver `DEPLOY.md` o `.claude-instructions.md`*
+## Next Steps
+
+- [ ] Analytics (optional)
+- [ ] Automated tests
+- [ ] Chat UX improvements
+- [ ] More PDF customization options
+
+---
+
+*For deploy information, see `DEPLOY.md` or `.claude-instructions.md`*
