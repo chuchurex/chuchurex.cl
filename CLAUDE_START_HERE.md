@@ -27,7 +27,7 @@ git push origin main
 ### ⚠️ Common Mistakes to Avoid
 
 ❌ Don't use `rsync` or `scp` for frontend
-❌ Don't try `ssh root@64.176.19.44` for frontend
+❌ Don't SSH to VPS for frontend
 ❌ Don't ask "how do I publish this?"
 
 ✅ Frontend always → `git push origin main`

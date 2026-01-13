@@ -6,8 +6,13 @@
 
 set -e  # Salir si hay error
 
-SERVER="root@64.176.19.44"
-REMOTE_DIR="/var/www/chuchurex-api"
+# Load environment variables
+if [ -f .env ]; then
+    export $(grep -v '^#' .env | xargs)
+fi
+
+SERVER="${VPS_USER:-root}@${VPS_HOST}"
+REMOTE_DIR="${VPS_PATH:-/var/www/chuchurex-api}"
 
 echo "🚀 Iniciando despliegue a producción..."
 echo "   Servidor: $SERVER"
@@ -45,5 +50,5 @@ echo ""
 echo "═══════════════════════════════════════════════════════════════"
 echo "  ✅ DESPLIEGUE COMPLETADO"
 echo "  🌐 API: https://api.chuchurex.cl"
-echo "  📊 Chats: https://api.chuchurex.cl/chats?key=chuchu2026"
+echo "  📊 Chats: https://api.chuchurex.cl/chats?key=\${CHATS_ACCESS_KEY}"
 echo "═══════════════════════════════════════════════════════════════"

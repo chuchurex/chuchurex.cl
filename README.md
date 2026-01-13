@@ -21,7 +21,6 @@ Chatbot para cotización de proyectos web con IA.
 - FastAPI + Python
 - Claude API (Haiku)
 - Hospedado en Vultr VPS (Ubuntu 24.04)
-- IP: 64.176.19.44
 
 ## Estructura del Proyecto
 
@@ -54,11 +53,9 @@ uman.ia/
 
 ### Acceder a los chats guardados
 
-```bash
-ssh root@64.176.19.44
-ls /var/www/chuchurex-api/chats/
-cat /var/www/chuchurex-api/chats/chat_YYYYMMDD_HHMMSS.json
-```
+Via web: `https://api.chuchurex.cl/chats?key=${CHATS_ACCESS_KEY}`
+
+O via SSH (ver credenciales en `.env`).
 
 ### Servicios
 
@@ -69,8 +66,8 @@ cat /var/www/chuchurex-api/chats/chat_YYYYMMDD_HHMMSS.json
 ### Comandos útiles
 
 ```bash
-# Conectar al servidor
-ssh root@64.176.19.44
+# Conectar al servidor (ver VPS_HOST en .env)
+ssh ${VPS_USER}@${VPS_HOST}
 
 # Reiniciar el servicio
 sudo systemctl restart chuchurex

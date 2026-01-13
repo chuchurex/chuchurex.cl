@@ -33,11 +33,16 @@ else
     fi
 fi
 
+# Load environment variables for display
+if [ -f .env ]; then
+    export $(grep -v '^#' .env | xargs)
+fi
+
 echo ""
 echo "═══════════════════════════════════════════════"
 echo "  🔧 Backend:  http://127.0.0.1:8002"
 echo "  🌐 Frontend: http://127.0.0.1:3007"
-echo "  📊 Chats:    http://127.0.0.1:8002/chats?key=chuchu2026"
+echo "  📊 Chats:    http://127.0.0.1:8002/chats?key=\${CHATS_ACCESS_KEY}"
 echo "═══════════════════════════════════════════════"
 echo ""
 

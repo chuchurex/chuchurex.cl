@@ -445,7 +445,7 @@ WantedBy=multi-user.target
 - Content-Type: `application/pdf`
 - Content-Disposition: `attachment; filename="propuesta_cliente_20260106_092150.pdf"`
 
-### GET `/chats?key=chuchu2026`
+### GET `/chats?key=${CHATS_ACCESS_KEY}`
 
 Vista HTML de todas las conversaciones guardadas durante la fase beta.
 
@@ -503,7 +503,7 @@ B) PALABRAS CLAVE: El usuario menciona "presupuesto", "cuánto cuesta",
 **Monitoreo:**
 ```bash
 # Ver conversaciones y evaluar cuándo ofreció PDF
-curl "https://api.chuchurex.cl/chats?key=chuchu2026"
+curl "https://api.chuchurex.cl/chats?key=\${CHATS_ACCESS_KEY}"
 ```
 
 ## Logs y Debugging

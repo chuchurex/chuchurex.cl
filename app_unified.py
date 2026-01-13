@@ -366,7 +366,7 @@ async def health():
 @app.get("/chats", response_class=HTMLResponse)
 async def view_chats(key: str = Query(None)):
     """Vista HTML de conversaciones guardadas (para análisis beta)"""
-    if key != "chuchu2026":
+    if key != os.getenv("CHATS_ACCESS_KEY", ""):
         return HTMLResponse("<h1>Acceso denegado</h1>", status_code=403)
     
     chats = []

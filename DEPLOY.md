@@ -19,7 +19,7 @@ git commit -m "change description"
 git push origin main
 ```
 
-**DON'T TRY:** rsync, scp, ssh to server 64.176.19.44 - that server is only for backend API.
+**DON'T TRY:** rsync, scp, ssh to server directly - that server is only for backend API.
 
 **HOSTING:** Cloudflare Pages detects the push and deploys automatically in ~1 minute.
 
@@ -32,7 +32,7 @@ The project has two separate parts:
 | Component | Hosting | Deploy |
 |-----------|---------|--------|
 | **Frontend** | Cloudflare Pages | Auto-deploy from GitHub |
-| **Backend API** | Vultr VPS (64.176.19.44) | Manual with `./deploy.sh` |
+| **Backend API** | Vultr VPS | Manual with `./deploy.sh` |
 
 ---
 
@@ -73,11 +73,7 @@ Cloudflare Pages detects the push and deploys automatically in ~1 minute.
 
 ### Hosting: Vultr VPS
 
-```
-IP: 64.176.19.44
-User: root
-Directory: /var/www/chuchurex-api
-```
+Server details are in `.env` (VPS_HOST, VPS_USER, VPS_PATH).
 
 ### 🤖 Deploy for Claude Code
 
@@ -106,7 +102,7 @@ This script:
 
 - API: https://api.chuchurex.cl
 - Health check: https://api.chuchurex.cl/health
-- Chats: https://api.chuchurex.cl/chats?key=chuchu2026
+- Chats: https://api.chuchurex.cl/chats?key=${CHATS_ACCESS_KEY}
 
 ---
 
@@ -160,9 +156,9 @@ git add . && git commit -m "message" && git push
 - [ ] Script handles SSH automatically
 
 ### ⚠️ NEVER DO:
-- ❌ `rsync frontend/ root@64.176.19.44:/var/www/...`
-- ❌ `scp frontend/*.html root@64.176.19.44:...`
-- ❌ `ssh root@64.176.19.44` to upload frontend
+- ❌ `rsync frontend/` to VPS server
+- ❌ `scp frontend/*.html` to VPS server
+- ❌ SSH to VPS to upload frontend
 - ❌ Ask for SSH keys for frontend deploy
 
 ### ✅ ALWAYS DO:
@@ -177,4 +173,4 @@ git add . && git commit -m "message" && git push
 - **DO NOT use Hostinger** for this project
 - The `deploy-frontend.sh` file is obsolete (was for Hostinger)
 - Cloudflare Pages does automatic deploy, you don't need wrangler
-- Server 64.176.19.44 is **ONLY for backend API**, not for frontend
+- VPS server is **ONLY for backend API**, not for frontend
