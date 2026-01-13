@@ -1,5 +1,30 @@
 # Deploy de Chuchurex
 
+## 🤖 INSTRUCCIONES PARA CLAUDE CODE
+
+**IMPORTANTE:** Este documento es para que Claude Code pueda deployar automáticamente sin preguntar cada vez.
+
+### Deploy Frontend (SIEMPRE USA ESTE MÉTODO)
+
+Cuando modifiques archivos del frontend (`frontend/` directory), el deploy es **automático vía GitHub**:
+
+```bash
+# 1. Stage los archivos modificados
+git add frontend/
+
+# 2. Commit con mensaje descriptivo
+git commit -m "descripción del cambio"
+
+# 3. Push a GitHub (Cloudflare Pages detecta y despliega automáticamente)
+git push origin main
+```
+
+**NO INTENTAR:** rsync, scp, ssh al servidor 64.176.19.44 - ese servidor es solo para el backend API.
+
+**HOSTING:** Cloudflare Pages detecta el push y despliega en ~1 minuto automáticamente.
+
+---
+
 ## Arquitectura
 
 El proyecto tiene dos partes separadas:
@@ -54,7 +79,18 @@ Usuario: root
 Directorio: /var/www/chuchurex-api
 ```
 
-### Deploy manual
+### 🤖 Deploy para Claude Code
+
+Cuando modifiques archivos del backend (`app.py`, `app_unified.py`, `pdf-generator/`):
+
+```bash
+# El script deploy.sh maneja SSH automáticamente
+./deploy.sh
+```
+
+**NO NECESITAS:** Configurar SSH, agregar claves, o ejecutar rsync/scp manualmente. El script `deploy.sh` ya tiene todo configurado.
+
+### Deploy manual (humanos)
 
 ```bash
 ./deploy.sh
@@ -109,8 +145,36 @@ git add . && git commit -m "mensaje" && git push
 
 ---
 
+## 🤖 Checklist para Claude Code
+
+### Antes de deployar frontend:
+- [ ] ¿Modifiqué archivos en `frontend/`? → Usar git push (NO ssh/rsync)
+- [ ] Stage archivos: `git add frontend/`
+- [ ] Commit: `git commit -m "descripción"`
+- [ ] Push: `git push origin main`
+- [ ] Cloudflare Pages despliega automáticamente en ~1 min
+
+### Antes de deployar backend:
+- [ ] ¿Modifiqué `app.py`, `app_unified.py` o `pdf-generator/`?
+- [ ] Ejecutar: `./deploy.sh`
+- [ ] El script maneja SSH automáticamente
+
+### ⚠️ NUNCA HACER:
+- ❌ `rsync frontend/ root@64.176.19.44:/var/www/...`
+- ❌ `scp frontend/*.html root@64.176.19.44:...`
+- ❌ `ssh root@64.176.19.44` para subir frontend
+- ❌ Preguntar por claves SSH para frontend deploy
+
+### ✅ SIEMPRE HACER:
+- ✅ Frontend → git push origin main
+- ✅ Backend → ./deploy.sh
+- ✅ Leer este archivo antes de intentar deploy
+
+---
+
 ## Notas
 
 - **NO usar Hostinger** para este proyecto
 - El archivo `deploy-frontend.sh` está obsoleto (era para Hostinger)
 - Cloudflare Pages hace el deploy automático, no necesitas wrangler
+- El servidor 64.176.19.44 es **SOLO para backend API**, no para frontend
