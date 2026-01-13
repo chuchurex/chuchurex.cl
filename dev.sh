@@ -1,45 +1,74 @@
 #!/bin/bash
-# CHUCHUREX - Development Script
-# Levanta frontend y backend en paralelo
+# =============================================================================
+# CHUCHUREX - Script de Desarrollo
+# Inicia el backend y frontend para desarrollo local
+# =============================================================================
 
-FRONTEND_PORT=3010
-BACKEND_PORT=8002
+echo "🚀 Iniciando Chuchurex Development Environment..."
+echo ""
 
-echo "Starting Chuchurex development servers..."
+# Verificar que estamos en el directorio correcto
+if [ ! -f "app_unified.py" ]; then
+    echo "❌ Error: Ejecuta este script desde la raíz del proyecto uman.ia"
+    exit 1
+fi
 
-# Kill existing processes on ports
-pkill -f "http.server $FRONTEND_PORT" 2>/dev/null
-pkill -f "uvicorn.*$BACKEND_PORT" 2>/dev/null
-lsof -ti:$FRONTEND_PORT | xargs kill -9 2>/dev/null
-lsof -ti:$BACKEND_PORT | xargs kill -9 2>/dev/null
-sleep 1
+# Verificar dependencias de Node
+if [ ! -d "pdf-generator/node_modules" ]; then
+    echo "📦 Instalando dependencias de PDF Generator..."
+    cd pdf-generator && npm install && cd ..
+fi
 
-# Start backend
-echo "Starting backend on port $BACKEND_PORT..."
-cd backend
-source .venv/bin/activate 2>/dev/null || python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt -q
-uvicorn app:app --host 127.0.0.1 --port $BACKEND_PORT &
+# Verificar entorno virtual Python
+if [ ! -d ".venv" ] && [ ! -d "backend/.venv" ]; then
+    echo "📦 Creando entorno virtual Python..."
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install fastapi uvicorn anthropic python-dotenv
+else
+    if [ -d ".venv" ]; then
+        source .venv/bin/activate
+    else
+        source backend/.venv/bin/activate
+    fi
+fi
+
+echo ""
+echo "═══════════════════════════════════════════════"
+echo "  🔧 Backend:  http://127.0.0.1:8002"
+echo "  🌐 Frontend: http://127.0.0.1:3007"
+echo "  📊 Chats:    http://127.0.0.1:8002/chats?key=chuchu2026"
+echo "═══════════════════════════════════════════════"
+echo ""
+
+# Función para limpiar al salir
+cleanup() {
+    echo ""
+    echo "🛑 Deteniendo servicios..."
+    kill $BACKEND_PID 2>/dev/null
+    kill $FRONTEND_PID 2>/dev/null
+    exit 0
+}
+
+trap cleanup SIGINT SIGTERM
+
+# Iniciar Backend
+echo "🐍 Iniciando Backend (FastAPI)..."
+uvicorn app_unified:app --reload --port 8002 &
 BACKEND_PID=$!
-cd ..
 
-# Wait for backend to start
+# Esperar a que el backend inicie
 sleep 2
 
-# Start frontend
-echo "Starting frontend on port $FRONTEND_PORT..."
-cd frontend
-python3 -m http.server $FRONTEND_PORT --bind 127.0.0.1 &
+# Iniciar Frontend
+echo "🌐 Iniciando Frontend (Live Server)..."
+cd frontend && npx live-server --port=3007 --no-browser &
 FRONTEND_PID=$!
 cd ..
 
 echo ""
-echo "Servers running:"
-echo "   Frontend: http://127.0.0.1:$FRONTEND_PORT"
-echo "   Backend:  http://127.0.0.1:$BACKEND_PORT"
+echo "✅ Servicios iniciados. Presiona Ctrl+C para detener."
 echo ""
-echo "Press Ctrl+C to stop both servers"
 
-# Wait for Ctrl+C
-trap "kill $BACKEND_PID $FRONTEND_PID 2>/dev/null; echo 'Servers stopped'; exit" INT
+# Mantener el script corriendo
 wait

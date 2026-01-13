@@ -1,0 +1,21 @@
+{
+  "name": "chuchurex-pdf-generator",
+  "version": "1.0.0",
+  "description": "Generador de PDFs profesionales para propuestas Chuchurex",
+  "main": "generate-pdf-api.js",
+  "scripts": {
+    "generate": "node generate-pdf-api.js",
+    "test": "node generate-pdf-api.js ../proposals/test.md ../proposals/test.pdf"
+  },
+  "keywords": [
+    "pdf",
+    "markdown",
+    "puppeteer"
+  ],
+  "author": "Chuchurex",
+  "license": "MIT",
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "puppeteer": "^24.34.0"
+  }
+}

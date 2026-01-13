@@ -37,3 +37,12 @@ logs/
 
 # Inbox (temporary files)
 inbox/
+
+# Generated proposals (keep test files)
+proposals/*.pdf
+proposals/*.md
+!proposals/test.md
+
+# Chat logs (beta)
+chats/*.json
+
