@@ -26,6 +26,7 @@ const translations = {
 
         // Footer
         footerAbout: "Acerca",
+        footerPortfolio: "Portafolio",
         footerPrivacy: "Privacidad",
 
         // Modal
@@ -73,6 +74,7 @@ const translations = {
 
         // Footer
         footerAbout: "About",
+        footerPortfolio: "Portfolio",
         footerPrivacy: "Privacy",
 
         // Modal
@@ -120,6 +122,7 @@ const translations = {
 
         // Footer
         footerAbout: "Sobre",
+        footerPortfolio: "Portfólio",
         footerPrivacy: "Privacidade",
 
         // Modal

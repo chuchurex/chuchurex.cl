@@ -737,6 +737,36 @@ body
     display: inline;
 }
 
+.subprojects-list
+{
+    list-style: none;
+    margin: 0.75rem 0 0 1.5rem;
+    padding: 0;
+}
+
+.subprojects-list li
+{
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.subprojects-list li:last-child
+{
+    margin-bottom: 0;
+}
+
+.subprojects-list a
+{
+    color: var(--color-conchevino-light);
+    font-weight: 400;
+}
+
+.subprojects-list a:hover
+{
+    color: var(--color-conchevino);
+}
+
 .tech-stack
 {
     display: grid;
