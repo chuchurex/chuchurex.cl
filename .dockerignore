@@ -1,0 +1,13 @@
+frontend/
+node_modules/
+venv/
+.env
+.env.example
+chats/
+proposals/
+*.tar.gz
+nic.cl/
+.git/
+CLAUDE.md
+deploy.sh
+dev.sh

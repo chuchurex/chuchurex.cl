@@ -84,7 +84,20 @@ async function sendMessage(message) {
     } catch (error) {
         console.error('Error:', error);
         typingIndicator.remove();
-        displayMessage(window.i18n.t('errorGeneric'), 'assistant');
+
+        // Remove the failed user message from history so they can retry
+        conversationHistory.pop();
+
+        let errorKey = 'errorGeneric';
+        if (error.message && error.message.includes('503')) {
+            errorKey = 'errorUnavailable';
+        } else if (error.message && error.message.includes('429')) {
+            errorKey = 'errorRateLimit';
+        } else if (error.message && error.message.includes('Failed to fetch')) {
+            errorKey = 'errorUnavailable';
+        }
+
+        displayMessage(window.i18n.t(errorKey), 'assistant');
     }
 }
 

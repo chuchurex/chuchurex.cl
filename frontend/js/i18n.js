@@ -23,6 +23,8 @@ const translations = {
 
         // Errors
         errorGeneric: "Ups, algo salió mal. ¿Puedes intentar de nuevo?",
+        errorUnavailable: "El chat no está disponible en este momento. Escríbeme directo a carlos@chuchurex.cl y te respondo a la brevedad.",
+        errorRateLimit: "Demasiadas solicitudes. Espera unos segundos e intenta de nuevo.",
 
         // Footer
         footerAbout: "Acerca",
@@ -71,6 +73,8 @@ const translations = {
 
         // Errors
         errorGeneric: "Oops, something went wrong. Can you try again?",
+        errorUnavailable: "The chat is temporarily unavailable. Contact me directly at carlos@chuchurex.cl and I'll get back to you shortly.",
+        errorRateLimit: "Too many requests. Wait a few seconds and try again.",
 
         // Footer
         footerAbout: "About",
@@ -119,6 +123,8 @@ const translations = {
 
         // Errors
         errorGeneric: "Ops, algo deu errado. Pode tentar de novo?",
+        errorUnavailable: "O chat não está disponível no momento. Me escreva diretamente em carlos@chuchurex.cl e respondo em breve.",
+        errorRateLimit: "Muitas solicitações. Espere alguns segundos e tente novamente.",
 
         // Footer
         footerAbout: "Sobre",

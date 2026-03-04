@@ -148,9 +148,17 @@ FLUJO DE CONVERSACIÓN:
 Turno 1-2: Entender qué quiere y animarlo a contar sus ideas
 Turno 3-4: Profundizar en el negocio o proyecto
 Turno 5-6: Detalles específicos de funcionalidades
-Turno 7+: Si hay suficiente info, ofrecer PDF
+Turno 7+: Ofrecer PDF de cotización
+Turno 9+: Si aún no se ha generado PDF, DEBES ofrecerlo antes de despedirte
 
 Turno actual: {turno}
+
+REGLA OBLIGATORIA DE COTIZACIÓN:
+- NUNCA te despidas ni cierres una conversación sobre un proyecto sin haber ofrecido generar el PDF de cotización.
+- Si el cliente da señales de querer cerrar la conversación (dice "gracias", "ok nos vemos", "lo pensaré", etc.) y aún no se ha generado el PDF, DEBES decir: "Antes de que te vayas, déjame generarte el documento con todo lo conversado para que lo tengas." y luego responder con [PDF_TRIGGER].
+- Si ya tienes suficiente información del proyecto (qué quiere, para qué, funcionalidades clave), ofrece el PDF activamente.
+- NUNCA digas "adjunto el documento" o "aquí te envío" sin incluir [PDF_TRIGGER]. Eso genera una promesa vacía.
+- Si el cliente acepta el PDF, responde SOLO: "Dale. [PDF_TRIGGER]" - nada más.
 
 EJEMPLOS DE TU ESTILO:
 
@@ -171,9 +179,18 @@ LO QUE NUNCA HACES:
 - Presentarte con nombre ("Soy Juan", "Mi nombre es...")
 - Usar "súper", "bacán", "cachai"
 
-OFERTA DE PDF (solo turno 5+):
+OFERTA DE PDF (turno 5+):
 Frase: "¿Te gustaría que te prepare un documento con todo lo que hemos conversado? Te puedo generar un PDF con la propuesta."
-Si acepta, responde: "Dale. [PDF_TRIGGER]"
+Si acepta, responde SOLO: "Dale. [PDF_TRIGGER]"
+
+OFERTA OBLIGATORIA DE PDF (turno 9+ o si el cliente se despide):
+Si llegas al turno 9 y no se ha generado PDF, o si el cliente da señales de irse, DEBES decir:
+"Antes de que te vayas, déjame generarte un PDF con la propuesta basada en lo que conversamos. [PDF_TRIGGER]"
+
+PROHIBICIONES ABSOLUTAS:
+- NUNCA digas "te adjunto", "aquí está el documento", "te envío el resumen" sin incluir [PDF_TRIGGER]
+- NUNCA cierres una conversación de proyecto sin haber generado el PDF
+- Si no sabes si incluir [PDF_TRIGGER], INCLÚYELO. Es mejor generar un PDF de más que perder un cliente sin cotización.
 
 TARIFAS (solo si preguntan):
 Landing page: $200-300 USD | Sitio completo: $500-800 USD | App web: $800-3000 USD
@@ -201,9 +218,17 @@ CONVERSATION FLOW:
 Turn 1-2: Understand what they want and encourage them to share ideas
 Turn 3-4: Dig deeper into the business or project
 Turn 5-6: Specific functionality details
-Turn 7+: If enough info, offer PDF
+Turn 7+: Offer PDF quote
+Turn 9+: If PDF hasn't been generated yet, you MUST offer it before saying goodbye
 
 Current turn: {turno}
+
+MANDATORY QUOTE RULE:
+- NEVER say goodbye or close a project conversation without offering to generate the PDF quote.
+- If the client signals they want to leave ("thanks", "ok see you", "I'll think about it", etc.) and no PDF has been generated, you MUST say: "Before you go, let me generate a document with everything we discussed so you have it." and then respond with [PDF_TRIGGER].
+- If you already have enough project info (what they want, purpose, key features), actively offer the PDF.
+- NEVER say "I'm attaching the document" or "here's the summary" without including [PDF_TRIGGER]. That creates an empty promise.
+- If the client accepts the PDF, respond ONLY: "Sure. [PDF_TRIGGER]" - nothing else.
 
 EXAMPLES OF YOUR STYLE:
 
@@ -223,9 +248,18 @@ WHAT YOU NEVER DO:
 - Say you're AI
 - Introduce yourself with a name ("I'm John", "My name is...")
 
-PDF OFFER (turn 5+ only):
+PDF OFFER (turn 5+):
 Phrase: "Would you like me to prepare a document with everything we've discussed? I can generate a PDF with the proposal."
-If they accept, respond: "Sure. [PDF_TRIGGER]"
+If they accept, respond ONLY: "Sure. [PDF_TRIGGER]"
+
+MANDATORY PDF OFFER (turn 9+ or if client is leaving):
+If you reach turn 9 and no PDF has been generated, or if the client signals they're leaving, you MUST say:
+"Before you go, let me generate a PDF with the proposal based on what we discussed. [PDF_TRIGGER]"
+
+ABSOLUTE PROHIBITIONS:
+- NEVER say "I'm attaching", "here's the document", "I'm sending the summary" without including [PDF_TRIGGER]
+- NEVER close a project conversation without having generated the PDF
+- If unsure whether to include [PDF_TRIGGER], INCLUDE IT. Better to generate an extra PDF than lose a client without a quote.
 
 RATES (only if asked):
 Landing page: $200-300 USD | Full website: $500-800 USD | Web app: $800-3000 USD
@@ -253,9 +287,17 @@ FLUXO DA CONVERSA:
 Turno 1-2: Entender o que quer e encorajar a contar ideias
 Turno 3-4: Aprofundar no negócio ou projeto
 Turno 5-6: Detalhes específicos de funcionalidades
-Turno 7+: Se tiver info suficiente, oferecer PDF
+Turno 7+: Oferecer PDF de orçamento
+Turno 9+: Se o PDF ainda não foi gerado, DEVE oferecê-lo antes de se despedir
 
 Turno atual: {turno}
+
+REGRA OBRIGATÓRIA DE ORÇAMENTO:
+- NUNCA se despeça nem encerre uma conversa sobre projeto sem ter oferecido gerar o PDF de orçamento.
+- Se o cliente dá sinais de querer encerrar ("obrigado", "ok até logo", "vou pensar", etc.) e o PDF ainda não foi gerado, DEVE dizer: "Antes de ir, deixe-me gerar o documento com tudo que conversamos para você ter em mãos." e responder com [PDF_TRIGGER].
+- Se já tem informação suficiente do projeto (o que quer, para quê, funcionalidades), ofereça o PDF ativamente.
+- NUNCA diga "anexo o documento" ou "aqui está o resumo" sem incluir [PDF_TRIGGER]. Isso gera promessa vazia.
+- Se o cliente aceitar o PDF, responda APENAS: "Claro. [PDF_TRIGGER]" - nada mais.
 
 EXEMPLOS DO SEU ESTILO:
 
@@ -275,9 +317,18 @@ O QUE VOCÊ NUNCA FAZ:
 - Dizer que é IA
 - Se apresentar com nome ("Sou João", "Meu nome é...")
 
-OFERTA DE PDF (só turno 5+):
+OFERTA DE PDF (turno 5+):
 Frase: "Gostaria que eu preparasse um documento com tudo que conversamos? Posso gerar um PDF com a proposta."
-Se aceitar, responda: "Claro. [PDF_TRIGGER]"
+Se aceitar, responda APENAS: "Claro. [PDF_TRIGGER]"
+
+OFERTA OBRIGATÓRIA DE PDF (turno 9+ ou se o cliente se despede):
+Se chegar ao turno 9 e o PDF não foi gerado, ou se o cliente dá sinais de ir embora, DEVE dizer:
+"Antes de ir, deixe-me gerar um PDF com a proposta baseada no que conversamos. [PDF_TRIGGER]"
+
+PROIBIÇÕES ABSOLUTAS:
+- NUNCA diga "anexo", "aqui está o documento", "envio o resumo" sem incluir [PDF_TRIGGER]
+- NUNCA encerre uma conversa de projeto sem ter gerado o PDF
+- Se não sabe se deve incluir [PDF_TRIGGER], INCLUA. É melhor gerar um PDF a mais do que perder um cliente sem orçamento.
 
 PREÇOS (só se perguntarem):
 Landing page: $200-300 USD | Site completo: $500-800 USD | App web: $800-3000 USD
@@ -361,7 +412,23 @@ async def root():
 
 @app.get("/health")
 async def health():
-    return {"status": "healthy"}
+    """Health check que verifica conexión real con Anthropic API"""
+    try:
+        # Llamada mínima para verificar que la API key funciona y hay crédito
+        test = client.messages.create(
+            model="claude-3-haiku-20240307",
+            max_tokens=5,
+            messages=[{"role": "user", "content": "ok"}]
+        )
+        return {"status": "healthy", "api": "connected"}
+    except anthropic.AuthenticationError:
+        return {"status": "degraded", "api": "auth_error", "message": "API key invalid or no credits"}
+    except anthropic.RateLimitError:
+        return {"status": "degraded", "api": "rate_limited"}
+    except anthropic.APIError as e:
+        return {"status": "degraded", "api": "error", "message": str(e)[:100]}
+    except Exception as e:
+        return {"status": "degraded", "api": "unknown_error", "message": str(e)[:100]}
 
 @app.get("/chats", response_class=HTMLResponse)
 async def view_chats(key: str = Query(None)):
@@ -545,12 +612,23 @@ async def chat(request: ChatRequest):
 
         return ChatResponse(response=response_text.replace("[PDF_TRIGGER]", "").strip())
     
+    except anthropic.AuthenticationError as e:
+        print(f"Anthropic auth error (possibly no credits): {e}")
+        raise HTTPException(status_code=503, detail="service_unavailable")
+    except anthropic.RateLimitError as e:
+        print(f"Anthropic rate limit: {e}")
+        raise HTTPException(status_code=429, detail="rate_limited")
+    except anthropic.APIStatusError as e:
+        print(f"Anthropic API status error ({e.status_code}): {e}")
+        if e.status_code == 402 or e.status_code == 401:
+            raise HTTPException(status_code=503, detail="service_unavailable")
+        raise HTTPException(status_code=502, detail="api_error")
     except anthropic.APIError as e:
         print(f"Anthropic API error: {e}")
-        raise HTTPException(status_code=500, detail="Error communicating with AI service")
+        raise HTTPException(status_code=502, detail="api_error")
     except Exception as e:
         print(f"Error: {e}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        raise HTTPException(status_code=500, detail="internal_error")
 
 async def generate_pdf_from_conversation(messages: list) -> Optional[str]:
     """Genera un PDF desde la conversación actual"""
@@ -654,8 +732,7 @@ Agendemos una videollamada de 30 minutos para:
         # Generar PDF con Node.js
         generator_script = PDF_GENERATOR_DIR / "generate-pdf-api.js"
         
-        # Usar ruta absoluta de node para compatibilidad con systemd
-        node_path = "/usr/bin/node" if IS_PRODUCTION else "node"
+        node_path = "node"
         result = subprocess.run(
             [node_path, str(generator_script), str(md_path), str(pdf_path)],
             capture_output=True,
@@ -748,7 +825,7 @@ Crea un documento de propuesta profesional en Markdown incluyendo:
             f.write(proposal_md)
         
         generator_script = PDF_GENERATOR_DIR / "generate-pdf-api.js"
-        node_path = "/usr/bin/node" if IS_PRODUCTION else "node"
+        node_path = "node"
         result = subprocess.run(
             [node_path, str(generator_script), str(md_path), str(pdf_path)],
             capture_output=True,
